@@ -5,8 +5,8 @@ Trade on any MetaTrader server directly You can check test our MT4/MT5 RESTfull 
 
 MT5API/MT4API RESTFull PHP,JS,Node.js,Python,Pascal,.... => https://youtu.be/PqW8GFfVk7U
 
-You triyng to make http request, 
-but not websocket. You can use our built-in WebSocket Test client 
+
+ You can use our built-in WebSocket Test client 
 [ws/wss]://[localhost:6001/localhost:6002/www.website.com]/wsOrderUpdate?id=[ID/Token] 
 wss://localhost:6002/wsOrderUpdate?id=w4isr666-nk4k-7yn8-xyob-dh3cja1vo83c 
 ws://localhost:6001/wsOrderUpdate?id=w4isr666-nk4k-7yn8-xyob-dh3cja1vo83c
