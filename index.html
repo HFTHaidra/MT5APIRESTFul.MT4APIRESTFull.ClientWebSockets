@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>"[HFTHaidra@gmail.com] ClientWebSocket" [For Testing ServerSockets this Client Socket]</title>
+<script>
+let socket ;
+ 
+var iTime = 0;
+function Start() {
+	document.getElementById("demo").innerHTML = "Hello JavaScript!";
+	console.log("Hello JavaScript!"+iTime.toString()  );
+	iTime+=1;
+}
+var iWSS = 0;
+ 
+
+function Startwss(urlO) {
+	let socket = new WebSocket("wss://loca"); ;
+	if(iWSS==0){
+		c("wss Start Listen ..."  );
+		iWSS = 1;
+		let url = document.getElementById(urlO).value ;
+		c("Sending to URL:"+url);
+		socket = new WebSocket(url);
+		socket.onopen = function(e) {
+		  c("[open] Connection established");
+		  c("Sending to server");
+		  socket.send("DDDD");
+		};
+
+		socket.onmessage = function(event) {
+		  console.log( event.data);
+		};
+
+		socket.onclose = function(event) {
+		  if (event.wasClean) {
+		    alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+		  } else {
+		    // e.g. server process killed or network down
+		    // event.code is usually 1006 in this case
+		    c('[close] Connection died');
+		  }
+		};
+
+		socket.onerror = function(error) {
+		  alecrt(`[error]`);
+		};
+
+	}else{
+		c("wss Stoped ."  );
+		socket = new WebSocket("wss://loc");
+
+		iWSS = 0;
+	}
+	
+	iTime+=1;
+}
+ 
+
+function c(msg){
+	console.log(msg);
+}
+ 
+</script>
+</head>
+
+<body>
+ 
+
+
+
+
+ <br><br><br>
+ <h4>built-in WebSocket Test client..</h4>
+ <h5>URL EX:</h5>
+ <h5>"ws://localhost:5030/OnQuote?id={ID}"</h5>
+ <h5>"ws://localhost:5030/wsOnQuote?id=" + id </h5>
+ <h5>"ws://localhost:7057/wsOnQuote?id={ID}"</h5>
+ <h5>"wss://localhost:7057/wsOnQuote?id={ID}"</h5>
+ <h5>"wss://localhost:5030/wsOnQuote?id={ID}</h5>
+ <h5>"ws://www.website.com/wsOnQuote?id={ID}"</h5>
+ <h6>open chrome developer tools [Console]</h6>
+ 
+ 
+ <br><br><br>
+
+
+URL:<input type="text" 
+value ="wss://localhost:7057/wsQuote?id=2nx9thn1-30d5-z0pd-i8l5-9yp1pvoqg8xf" onblur="getVal()" id="wsOnQuote" size="50">
+<br> Start WebSockets[ws/wss] :
+<button onclick="Startwss('wsOnQuote')"> Start </button>
+
+
+ <br><br><br>
+
+
+URL:<input type="text" 
+value ="wss://localhost:7057/wsOrderUpdate?id=gu3g6r1v-zzee-2zhy-2wyn-a9cxqa4w3b5i" onblur="getVal()" id="wsOrderUpdate" size="50">
+<br> Start WebSockets[ws/wss] :
+<button onclick="Startwss('wsOrderUpdate')"> Start </button>
+
+
+
+ <br><br><br>
+
+
+URL:<input type="text" 
+value ="wss://localhost:7057/wsOrderProfit?id=gu3g6r1v-zzee-2zhy-2wyn-a9cxqa4w3b5i" onblur="getVal()" id="wsOrderUpdate" size="50">
+<br> Start WebSockets[ws/wss] :
+<button onclick="Startwss('wsOrderProfit')"> Start </button>
+
+
+</body>
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+</html>
